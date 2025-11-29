@@ -1,0 +1,10 @@
+@model CustomerManagementApp.Models.Customer
+<h1>Edit Customer</h1>
+<form method="post">
+<input type="hidden" name="Id" value="@Model.Id" />
+<label>Name:</label><br />
+<input name="Name" value="@Model.Name" /><br />
+<label>Email:</label><br />
+<input name="Email" value="@Model.Email" /><br /><br />
+<button type="submit">Update</button>
+</form>

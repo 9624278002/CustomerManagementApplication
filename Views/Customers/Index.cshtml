@@ -1,0 +1,19 @@
+@model List<CustomerManagementApp.Models.Customer>
+<h1>Customer List</h1>
+<a href="/Customers/Create">Add Customer</a>
+<table border="1" cellpadding="5">
+<tr><th>ID</th><th>Name</th><th>Email</th><th>Actions</th></tr>
+@foreach(var c in Model)
+{
+<tr>
+<td>@c.Id</td>
+<td>@c.Name</td>
+<td>@c.Email</td>
+<td>
+    <a href="/Customers/Details/@c.Id">Details</a> |
+    <a href="/Customers/Edit/@c.Id">Edit</a> |
+    <a href="/Customers/Delete/@c.Id">Delete</a>
+</td>
+</tr>
+}
+</table>
