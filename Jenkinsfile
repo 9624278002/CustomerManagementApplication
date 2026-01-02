@@ -1,5 +1,5 @@
-﻿pipeline {
-     agent any 
+pipeline {
+    agent any 
     environment {
         IMAGE_NAME = "customer-management-app"
         IMAGE_TAG = "${BUILD_NUMBER}"
@@ -8,8 +8,7 @@
     stages {
         stage('Checkout Code') {
             steps {
-                git branch: 'main',
-                url: 'https://github.com/<your-username>/CustomerManagementApplication.git'
+                git branch: 'main', url: 'https://github.com/9624278002/CustomerManagementApplication.git'
             }
         }
         stage('Build Docker Image') {
@@ -41,7 +40,7 @@
             steps {
                 sh '''
                 sleep 10
-                curl -f http://localhost || exit 1
+                curl -f http://localhost:80 || exit 1
                 '''
             }
         }
@@ -57,7 +56,7 @@
             echo "CI/CD Pipeline Completed Successfully"
         }
         failure {
-            echo "Deployment Failed Immediate Attention Required"
+            echo "Deployment Failed - Immediate Attention Required"
         }
     }
 }
