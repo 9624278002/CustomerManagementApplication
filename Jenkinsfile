@@ -31,7 +31,7 @@ pipeline {
                 sh '''
                 docker run -d \
                 --name $CONTAINER_NAME \
-                -p 8080:8080 \
+                -p 8090:8090 \
                 $IMAGE_NAME:$IMAGE_TAG
                 '''
             }
