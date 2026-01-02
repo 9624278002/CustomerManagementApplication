@@ -1,21 +1,17 @@
 ﻿pipeline {
-    agent any
-
+     agent any 
     environment {
         IMAGE_NAME = "customer-management-app"
         IMAGE_TAG = "${BUILD_NUMBER}"
         CONTAINER_NAME = "customer-management-container"
     }
-
     stages {
-
         stage('Checkout Code') {
             steps {
                 git branch: 'main',
                 url: 'https://github.com/<your-username>/CustomerManagementApplication.git'
             }
         }
-
         stage('Build Docker Image') {
             steps {
                 sh '''
@@ -23,7 +19,6 @@
                 '''
             }
         }
-
         stage('Stop Old Container') {
             steps {
                 sh '''
@@ -32,7 +27,6 @@
                 '''
             }
         }
-
         stage('Run New Container') {
             steps {
                 sh '''
@@ -43,7 +37,6 @@
                 '''
             }
         }
-
         stage('Health Check') {
             steps {
                 sh '''
@@ -52,7 +45,6 @@
                 '''
             }
         }
-
         stage('Cleanup') {
             steps {
                 sh 'docker image prune -f'
@@ -65,7 +57,7 @@
             echo "CI/CD Pipeline Completed Successfully"
         }
         failure {
-            echo "Deployment Failed – Immediate Attention Required"
+            echo "Deployment Failed Immediate Attention Required"
         }
     }
 }
